@@ -3,8 +3,8 @@ unit untFormMaquinaDeDinheiro;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.Variants, System.Classes, Vcl.Graphics, System.Math, System.StrUtils, TypInfo,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, Vcl.NumberBox, untMaquinaDeDinheiro, Vcl.ExtCtrls;
+  Windows, Messages, Variants, Classes, Graphics, Math, StrUtils, TypInfo, Controls, Forms, Dialogs, StdCtrls, Mask,
+  NumberBox, ExtCtrls, untMaquinaDeDinheiro;
 
 type
   TfrmMaquinaDeDinheiro = class(TForm)
@@ -64,15 +64,10 @@ begin
       StrTipo := IfThen(IsMoeda, 'moeda', 'nota');
       StrEnum := GetEnumName(TypeInfo(TCedula), Ord(Tipo));
       if (IsMoeda) then
-        StrValor := (StrToInt(StrEnum.Substring(7))/100).ToString(ffNumber, 8, 2).Replace(',', '.')
+        StrValor := (StrToInt(StrEnum.Substring(7)) / 100).ToString(ffNumber, 8, 2).Replace(',', '.')
       else
         StrValor := StrEnum.Substring(6);
-      Linha := Format('%d %s%s de %s - TTroco(%s, %0:d)'
-                     ,[Quantidade
-                      ,StrTipo
-                      ,IfThen(IsPlural, 's')
-                      ,StrValor
-                      ,StrEnum]);
+      Linha := Format('%d %s%s de %s - TTroco(%s, %0:d)', [Quantidade, StrTipo, IfThen(IsPlural, 's'), StrValor, StrEnum]);
       Saida.Add(Linha);
     end;
     Saida.EndUpdate;

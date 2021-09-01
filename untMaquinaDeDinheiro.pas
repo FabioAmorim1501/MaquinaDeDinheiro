@@ -5,12 +5,13 @@ interface
 uses Classes;
 
 type
-  IMaquina = interface['{214BF960-EAF5-41C2-91D5-0E8F401D65A3}']
+  IMaquina = interface
+    ['{214BF960-EAF5-41C2-91D5-0E8F401D65A3}']
     function MontarTroco(Troco: Double): TList;
   end;
 
-  TCedula = (ceNota100, ceNota50, ceNota20, ceNota10, ceNota5, ceNota2,
-    ceMoeda100, ceMoeda50, ceMoeda25, ceMoeda10, ceMoeda5, ceMoeda1);
+  TCedula = (ceNota100, ceNota50, ceNota20, ceNota10, ceNota5, ceNota2, ceMoeda100, ceMoeda50, ceMoeda25, ceMoeda10,
+    ceMoeda5, ceMoeda1);
 
   TTroco = class
   private
